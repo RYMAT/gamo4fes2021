@@ -2,6 +2,7 @@
 
 **/.dist
 proxy.conf.json
+/public
 
 # compiled output
 /dist
