@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  APP_FIREBASE_KEY: undefined,
+  APP_FIREBASE_DOMAIN: undefined,
+  APP_FIREBASE_PROJECT_ID: undefined,
+  APP_FIREBASE_STORAGE_BUCKET: undefined,
+  APP_FIREBASE_SENDER_ID: undefined,
 };
 
 /*
