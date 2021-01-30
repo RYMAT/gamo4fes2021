@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-gamo": {
+      "hosting": {
+        "gamoyon": [
+          "test-gamo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-gamo"
+  }
+}
