@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run config -- --environment=dev && ng serve -o",
-    "build": "ng build --prod",
+    "build": "npm run config -- --environment=prod && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
