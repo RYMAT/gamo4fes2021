@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../environments/environment';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +8,19 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent implements OnInit {
   title = 'gamoyon';
+  logoUrl: string | null = null;
+
+  constructor(private storage: AngularFireStorage) {
+  }
 
   ngOnInit(): void {
+    const storageRef = this.storage.storage.ref();
+    storageRef.child('images/logo.png').getDownloadURL().then(v => this.logoUrl = v);
     console.log(
-      environment.APP_FIREBASE_KEY,
-      environment.APP_FIREBASE_DOMAIN,
-      environment.APP_FIREBASE_PROJECT_ID,
-      environment.APP_FIREBASE_STORAGE_BUCKET,
-      environment.APP_FIREBASE_SENDER_ID,
+      // environment.firebase
+      // storageRef.bucket,
     );
+
+
   }
 }

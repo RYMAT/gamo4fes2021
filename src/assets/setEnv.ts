@@ -46,11 +46,14 @@ const environmentFileContent = `
 
   export const environment = {
     production: ${isProduction},
-    APP_FIREBASE_KEY: '${process.env.APP_FIREBASE_KEY}',
-    APP_FIREBASE_DOMAIN: '${process.env.APP_FIREBASE_DOMAIN}',
-    APP_FIREBASE_PROJECT_ID: '${process.env.APP_FIREBASE_PROJECT_ID}',
-    APP_FIREBASE_STORAGE_BUCKET: '${process.env.APP_FIREBASE_STORAGE_BUCKET}',
-    APP_FIREBASE_SENDER_ID: '${process.env.APP_FIREBASE_SENDER_ID}',
+    firebase: {
+      apiKey: '${process.env.APP_FIREBASE_KEY}',
+      authDomain: '${process.env.APP_FIREBASE_DOMAIN}',
+      projectId: '${process.env.APP_FIREBASE_PROJECT_ID}',
+      storageBucket: '${process.env.APP_FIREBASE_STORAGE_BUCKET}',
+      messagingSenderId: '${process.env.APP_FIREBASE_SENDER_ID}',
+      appId: '${process.env.APP_FIREBASE_APP_ID}',
+    },
   };
 `;
 
