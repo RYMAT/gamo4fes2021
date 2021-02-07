@@ -24,6 +24,58 @@
   }
 }
 
+.laptop, .comment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.laptop {
+  height: 250px;
+  width: 250px;
+  margin: 133px auto 0;
+  transform: translateX(-415px);
+}
+
+.comment {
+  height: 62px;
+  width: 240px;
+  margin: 88px auto auto;
+  bottom: auto;
+  transform: translateX(200px);
+}
+
+.laptop-image, .comment-image {
+  height: 100%;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.laptop-image {
+  background-image: url($image-path + "/top/laptop.png");
+  animation: vibration 3.2s infinite;
+}
+
+.comment-image {
+  transform: translateY(80px);
+  visibility: hidden;
+  opacity: 0;
+  background-image: url($image-path + "/top/comment.png");
+}
+
+.moving {
+  .comment-image {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.4s ease-out 2s, opacity 0.4s ease-out 2s;
+  }
+}
+
 @keyframes movingGyamossy {
   0% {
     transform: rotate(0) translateY(0);
@@ -66,7 +118,6 @@
     background-repeat: no-repeat;
     &.town {
       z-index: 2;
-      background-image: url($image-path + "/top/town.png");
     }
     &.gyammossy {
       transform: translateY(120px);
@@ -129,38 +180,6 @@
     background-image: url($image-path + "/top/kira.png");
     z-index: 2;
   }
-  .balloon {
-    position: absolute;
-    top: 0;
-    left: -55vw;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 250px;
-    height: 400px;
-    z-index: 3;
-    .balloon-inner {
-      width: 100%;
-      height: 100%;
-      .balloon-content {
-        width: 100%;
-        height: 100%;
-        background-size: contain;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-image: url($image-path + "/top/baloon.png");
-      }
-    }
-    &.is-loaded {
-      animation: 3.5s balloonRoll ease-in-out infinite;
-      .balloon-inner {
-        animation: floatH 7s ease-in-out infinite alternate;
-        .balloon-content {
-          animation: floatV 6s ease-in-out infinite alternate;
-        }
-      }
-    }
-  }
 }
 
 @keyframes cloud {
@@ -201,15 +220,6 @@
   100% {
     opacity: 1;
     transform: translateY(15px);
-  }
-}
-
-@keyframes balloonRoll {
-  0%, 100% {
-    transform: rotateZ(10deg) scale(0.9);
-  }
-  50% {
-    transform: rotateZ(-10deg) scale(1);
   }
 }
 
@@ -394,6 +404,129 @@
   }
 }
 
+.is-display-none {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.js-opacity {
+  opacity: 0;
+  transition: all 0.4s ease-in 0s;
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+.js-translate-x {
+  transform: translateX(20px);
+  transition: all 0.4s ease-in-out 0s;
+  &.is-active {
+    transform: translateX(0);
+  }
+}
+
+.js-translate-y {
+  transform: translateY(20px);
+  transition: all 0.4s ease-in-out 0s;
+  &.is-active {
+    transform: translateX(0);
+  }
+}
+
+.back-button-wrapper {
+  margin-top: 24px;
+  .btn-back {
+    outline: none;
+    box-shadow: none;
+    color: $primary-color;
+    text-decoration: none;
+    > i {
+      margin-right: 16px;
+    }
+  }
+}
+
+.body-content {
+  padding: 0;
+  text-align: left;
+}
+
+.live-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px 24px;
+  min-width: 100vw;
+  background-color: $primary-color;
+  .inner {
+    width: 1000px;
+    max-width: 1000px;
+  }
+  .heading-content {
+    color: #fff;
+    .heading-text {
+      &:before, &:after {
+        background: #fff;
+        opacity: .9;
+      }
+    }
+  }
+}
+
+.archive-section {
+  min-width: 100vw;
+  background-color: #fafafa;
+}
+
+.archive-section {
+  margin-top: 0;
+  padding: 96px 0 48px;
+  .body-content {
+    padding: 40px 16px;
+  }
+}
+
+.supporter-section {
+  margin-top: 80px;
+}
+
+@keyframes vibration {
+  0% {
+    transform: translate(0px, 0px) rotateZ(0deg)
+  }
+  2% {
+    transform: translate(2px, 2px) rotateZ(2deg)
+  }
+  4% {
+    transform: translate(0px, 2px) rotateZ(0deg)
+  }
+  6% {
+    transform: translate(2px, 0px) rotateZ(-2deg)
+  }
+  8% {
+    transform: translate(0px, 0px) rotateZ(0deg)
+  }
+  10% {
+    transform: translate(2px, 2px) rotateZ(2deg)
+  }
+  12% {
+    transform: translate(0px, 0px) rotateZ(0deg)
+  }
+  14% {
+    transform: translate(2px, 0px) rotateZ(-2deg)
+  }
+  16% {
+    transform: translate(0px, 2px) rotateZ(0deg)
+  }
+  18% {
+    transform: translate(0px, 0px) rotateZ(0deg)
+  }
+  100% {
+    transform: translate(0px, 0px) rotateZ(0deg)
+  }
+}
+
+
 /**
 * SP対応
 */
@@ -480,6 +613,21 @@
     }
   }
 
+  .laptop {
+    height: 160px;
+    width: 160px;
+    margin: auto;
+    transform: translateX(-120px);
+  }
+
+  .comment {
+    height: 56px;
+    width: 160px;
+    margin: 60px auto auto;
+    bottom: auto;
+    transform: translateX(110px);
+  }
+
   .js-translate-x {
     transform: translateX(10px);
     transition: all 0.4s ease-in 0s;
@@ -494,90 +642,7 @@
       transform: translateX(0);
     }
   }
-}
-
-.is-display-none {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.js-opacity {
-  opacity: 0;
-  transition: all 0.4s ease-in 0s;
-  &.is-active {
-    opacity: 1;
+  .supporter-section {
+    margin-top: 40px;
   }
-}
-
-.js-translate-x {
-  transform: translateX(20px);
-  transition: all 0.4s ease-in-out 0s;
-  &.is-active {
-    transform: translateX(0);
-  }
-}
-
-.js-translate-y {
-  transform: translateY(20px);
-  transition: all 0.4s ease-in-out 0s;
-  &.is-active {
-    transform: translateX(0);
-  }
-}
-
-.back-button-wrapper {
-  margin-top: 24px;
-  .btn-back {
-    outline: none;
-    box-shadow: none;
-    color: $primary-color;
-    text-decoration: none;
-    > i {
-      margin-right: 16px;
-    }
-  }
-}
-
-.body-content {
-  padding: 16px;
-  text-align: left;
-}
-
-.live-section {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 64px 24px;
-  min-width: 100vw;
-  background-color: $primary-color;
-  .inner {
-    width: 1000px;
-    max-width: 1000px;
-  }
-  .heading-content {
-    color: #fff;
-    .heading-text {
-      &:before, &:after {
-        background: #fff;
-        opacity: .9;
-      }
-    }
-  }
-}
-
-.archive-section {
-  min-width: 100vw;
-  background-color: #fafafa;
-}
-
-.archive-section {
-  margin-top: 0;
-  padding: 96px 0 48px;
-  .body-content {
-    padding: 40px 16px;
-  }
-}
-
-.supporter-section {
-  margin-top: 80px;
 }

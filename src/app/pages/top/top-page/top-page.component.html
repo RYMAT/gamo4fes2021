@@ -2,17 +2,18 @@
   <div class="main-image">
     <div class="bg-content town bg-image parallax-el"
          data-speed-y="-15" data-offset="0"
+         [style.background-image]="'url('+ (townImage$ | async) + ')'"
     ></div>
     <div class="bg-content gyammossy bg-image"></div>
     <div class="cloud cloud-1 bg-image"></div>
     <div class="cloud cloud-2 bg-image"></div>
-    <div class="kira"></div>
-    <div class="balloon parallax-el" [class.is-loaded]="isLoaded"
-         data-speed-y="25" data-offset="-10">
-      <div class="balloon-inner">
-        <div class="balloon-content"></div>
-      </div>
+    <div class="laptop">
+      <div class="laptop-image"></div>
     </div>
+    <div class="comment">
+      <div class="comment-image"></div>
+    </div>
+    <div class="kira"></div>
     <div class="logo-content bg-image">がもよんフェス2020 - 2021</div>
   </div>
   <div class="main-content container">

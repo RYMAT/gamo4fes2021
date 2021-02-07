@@ -30,7 +30,6 @@ export class ScrollStyleDirective implements OnInit, OnDestroy, AfterViewInit {
           return;
         }
         const scrollPosition = this.getScrollY(window);
-        // console.log(this.getScrollY(window));
         const windowHeight = window.innerHeight;
         if (scrollPosition + windowHeight >= this.componentPosition + this.offsetHeight) {
           this.renderer.addClass(this.targetEl, this.addClassName);

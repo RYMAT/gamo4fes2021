@@ -36,7 +36,6 @@
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
-
   list-style: none;
   margin: 0;
   padding: 0;
@@ -47,12 +46,14 @@
 }
 
 .artist-label {
+  max-width: 210px;
   display: block;
   margin-top: 8px;
   text-align: center;
   color: #333;
   font-weight: bold;
   font-size: 15px;
+  word-break: break-all;
 }
 
 .artist-thumb-content {
@@ -78,5 +79,50 @@
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: $screen-xs) {
+  .tab-heading {
+    font-size: 16px;
+    .day-label {
+      display: block;
+    }
+    .week-day {
+      font-size: 12px;
+    }
+  }
+  .tab-content {
+    padding: 16px 0;
+  }
+  .list-items {
+    margin: 8px;
+  }
+
+  .artist-label {
+    max-width: 140px;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .artist-thumb-content {
+    width: 140px;
+    height: 140px;
+    > img {
+      font-size: 9px;
+    }
+  }
+
+  :host ::ng-deep {
+    .tabset {
+      .nav > li > a {
+        padding: 8px;
+      }
+    }
+    .nav-tabs {
+      justify-content: flex-start;
+      overflow-x: auto;
+      overflow-y: visible;
+    }
   }
 }

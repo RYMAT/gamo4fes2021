@@ -1,3 +1,5 @@
+@import "~node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
 .supporter-list {
   width: 100%;
   display: flex;
@@ -15,8 +17,7 @@
 }
 
 .image-wrapper {
-  max-width: 300px;
-  max-height: 90px;
+  max-width: 240px;
   .image-content {
     width: 100%;
     height: auto;
@@ -28,4 +29,14 @@
 .anchor-link {
   display: block;
   margin-top: 8px;
+}
+
+@media screen and (max-width: $screen-xs) {
+  .image-wrapper {
+    max-width: 200px;
+  }
+  .list-item {
+    margin: 8px;
+    padding: 4px;
+  }
 }

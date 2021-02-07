@@ -19,7 +19,7 @@ export class SupporterInfoComponent implements OnInit {
     if (id === null) {
       return null;
     }
-    return this.getDownloadUrl(`supporters/${id}.jpg`);
+    return this.getDownloadUrl(`images/supporters/${id}.jpg`);
   }
 
   private getDownloadUrl(path: string): string | null {

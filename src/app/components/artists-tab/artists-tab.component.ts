@@ -51,7 +51,7 @@ export class ArtistsTabComponent implements OnInit, AfterViewInit {
     if (id === null) {
       return null;
     }
-    return this.getDownloadUrl(`artists/${id}.jpg`);
+    return this.getDownloadUrl(`images/artists/${id}.jpg`);
   }
 
   private getDownloadUrl(path: string): string | null {

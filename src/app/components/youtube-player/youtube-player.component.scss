@@ -5,6 +5,9 @@
   padding: 42px;
   border-radius: 16px;
   background-color: #fff;
+  > iframe {
+    height: 400px;
+  }
   .player-heading {
     margin: 16px 0 0;
     padding: 0;
@@ -15,5 +18,22 @@
   }
   & + .player-content {
     margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: $screen-xs) {
+  .player-content {
+    padding: 16px;
+    > iframe {
+      height: 200px;
+    }
+    .player-heading {
+      margin: 8px 0 0;
+      padding: 0;
+      font-size: 24px;
+    }
+    & + .player-content {
+      margin-top: 32px;
+    }
   }
 }

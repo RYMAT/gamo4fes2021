@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { LoadingService } from './core/services/loading.service';
+import { queueScheduler, Subscription } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -22,25 +24,66 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
     ]),
   ],
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  state = 'show';
-  splashState = 'change';
-  // TODO: topイメージ読み込み完了時にstateを変更
-  // logoUrl$ = from(this.storage.storage.ref().child('images/logo.png').getDownloadURL());
+export class AppComponent implements OnInit, OnDestroy {
+  state = '';
+  splashState = '';
+  subscription = new Subscription();
 
-  constructor(private storage: AngularFireStorage) {}
-
-  ngOnInit(): void {
+  // タッチデバイス判定
+  get isTouchDevice(): boolean {
+    return window.ontouchstart === null;
   }
 
-  ngAfterViewInit(): void {
-    // TODO:
-    setTimeout(() => {
-      this.splashState = 'change';
-    }, 500);
+  constructor(private loadingService: LoadingService, @Inject(DOCUMENT) private document: Document) {}
+
+  ngOnInit(): void {
+    this.subscription.add(this.loadingService.isLoaded.subscribe((v) => this.onLoad(v)));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   onDoneSplash(event: any): void {
     this.splashState = 'show';
+  }
+
+  onActivate(): void {
+    window.scrollTo(0, 0);
+    if (this.isTouchDevice) {
+      this.document.body.scrollTop = 0;
+    }
+    // 初回は処理しない
+    if (!!this.state) {
+      this.setState('change');
+      this.splashState = 'change';
+      return;
+    }
+    this.splashState = 'show';
+  }
+
+  private onLoad(isLoaded: boolean): void {
+    if (!isLoaded) {
+      this.setState('');
+      return;
+    }
+    this.setState('show');
+    // if (!this.isTouchDevice) {
+    //   this.zone.runOutsideAngular(() => {
+    //     setTimeout(() => {
+    //       luxy.init({
+    //         wrapper: '#parallax',
+    //         targets: '.parallax-el',
+    //         wrapperSpeed: 0.09
+    //       });
+    //     });
+    //   });
+    // }
+  }
+
+  private setState(state: string): void {
+    queueScheduler.schedule(() => {
+      this.state = state;
+    });
   }
 }
