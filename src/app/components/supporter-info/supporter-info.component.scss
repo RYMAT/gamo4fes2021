@@ -12,8 +12,8 @@
 }
 
 .list-item {
-  margin: 16px;
-  padding: 8px;
+  margin: 8px;
+  padding: 0;
 }
 
 .image-wrapper {
@@ -34,9 +34,5 @@
 @media screen and (max-width: $screen-xs) {
   .image-wrapper {
     max-width: 200px;
-  }
-  .list-item {
-    margin: 8px;
-    padding: 4px;
   }
 }
