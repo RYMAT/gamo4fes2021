@@ -3,6 +3,7 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
 import { LoadingService } from './core/services/loading.service';
 import { queueScheduler, Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+import { environment } from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(this.loadingService.isLoaded.subscribe((v) => this.onLoad(v)));
+    console.log(environment.firebase);
   }
 
   ngOnDestroy(): void {
