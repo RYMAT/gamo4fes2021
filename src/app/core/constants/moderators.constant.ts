@@ -27,11 +27,10 @@ export const MODERATORS: StageArtist[] = [
         name: '0x3x8(cafe bar 鐘の音)',
         snsLink: 'https://www.instagram.com/kane_no_ne/',
       },
-      // TODO: 修正する
       {
         id: 74,
         name: '吉田文人',
-        snsLink: '',
+        snsLink: 'https://twitter.com/yoshidasenpaii',
       },
     ],
     channel: 1,
