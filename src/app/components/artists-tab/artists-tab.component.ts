@@ -1,17 +1,18 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 import { queueScheduler, Subject } from 'rxjs';
 import { StageArtist } from '../../core/models/artist';
 import { STAGE_ARTISTS } from '../../core/constants/stage-artists.constant';
 import { STORAGE_BASE_PATH } from '../../core/constants/firebase-storage.constant';
 import { format } from 'date-fns';
+import { MODERATORS } from '../../core/constants/moderators.constant';
 
 @Component({
   selector: 'app-artists-tab',
   templateUrl: './artists-tab.component.html',
   styleUrls: ['./artists-tab.component.scss'],
 })
-export class ArtistsTabComponent implements OnInit, AfterViewInit {
+export class ArtistsTabComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('artistTabs', { static: false }) artistTabs!: TabsetComponent;
 
   readonly tabItems: string[] = [
@@ -25,10 +26,17 @@ export class ArtistsTabComponent implements OnInit, AfterViewInit {
   ];
 
   stageArtists$ = new Subject<Required<StageArtist[]>>();
+  mcs$ = new Subject<Required<StageArtist>>();
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.stageArtists$.subscribe((artists) => {
+      const date = artists[0].date;
+      const [moderator] = MODERATORS.filter((m) => m.date === date);
+      this.mcs$.next(moderator);
+    });
+  }
 
   ngAfterViewInit(): void {
     // NOTE: ExpressionChangedAfterItHasBeenCheckedError対策
@@ -41,6 +49,10 @@ export class ArtistsTabComponent implements OnInit, AfterViewInit {
       }
       this.stageArtists$.next(this.checkStageArtists() ?? [STAGE_ARTISTS[0]]);
     }, 1);
+  }
+
+  ngOnDestroy(): void {
+    this.stageArtists$.unsubscribe();
   }
 
   onSelectedTab(tab: TabDirective): void {

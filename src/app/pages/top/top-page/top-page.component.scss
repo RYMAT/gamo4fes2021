@@ -447,7 +447,7 @@
 }
 
 .body-content {
-  padding: 0;
+  padding: 16px 0;
   text-align: left;
 }
 
@@ -488,6 +488,16 @@
 
 .supporter-section {
   margin-top: 80px;
+}
+
+.time-table-image {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  &:hover {
+    opacity: .9;
+  }
 }
 
 @keyframes vibration {

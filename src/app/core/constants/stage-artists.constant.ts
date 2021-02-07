@@ -166,6 +166,11 @@ const SAT_STAGE_ARTISTS_1: StageArtist = {
       name: 'funnySkash(Acoustic ver.)',
       snsLink: 'http://funnyskash.com/',
     },
+    {
+      id: 71,
+      name: '魔法使い 真生(MASAO)',
+      snsLink: 'https://twitter.com/masao_magic',
+    },
   ],
 };
 // 2/27(土) - 2
@@ -237,6 +242,7 @@ const SUN_STAGE_ARTISTS_1: StageArtist = {
       snsLink: 'http://nishimurakana.com/',
     },
     { id: 59, name: '早瀬雅之＆加藤謙太', snsLink: 'https://www.youtube.com/watch?v=1w8gCCUfVUw' },
+    { id: 70, name: 'あざーす・のず', snsLink: 'https://aza-su-nozu.net' },
   ],
 };
 // 2/28(日) - 2

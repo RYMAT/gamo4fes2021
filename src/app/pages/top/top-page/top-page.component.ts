@@ -4,6 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { from } from 'rxjs';
 import * as imageLoaded from 'imagesloaded';
 import { LoadingService } from '../../../core/services/loading.service';
+import { STORAGE_BASE_PATH } from '../../../core/constants/firebase-storage.constant';
 
 @Component({
   selector: 'app-top-page',
@@ -16,6 +17,8 @@ export class TopPageComponent implements OnInit {
   archives = LIVE_ARCHIVES;
   // TOP Image
   townImage$ = from(this.storage.storage.ref().child('images/top/town.png').getDownloadURL());
+  // Time-Table
+  timeTable$ = from(this.storage.storage.ref().child('images/time-table.jpg').getDownloadURL());
 
   constructor(
     private storage: AngularFireStorage,
@@ -42,5 +45,14 @@ export class TopPageComponent implements OnInit {
         this.renderer.addClass(topPageEl, 'moving');
       }, 3000);
     });
+  }
+
+  onOpenTimeTable(): void {
+    const timeTablePath = this.getDownloadUrl('images/time-table.pdf');
+    window.open(timeTablePath);
+  }
+
+  private getDownloadUrl(path: string): string {
+    return `${STORAGE_BASE_PATH}/${encodeURIComponent(path)}?alt=media`;
   }
 }

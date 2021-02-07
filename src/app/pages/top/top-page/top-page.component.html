@@ -28,6 +28,20 @@
         <app-artists-tab></app-artists-tab>
       </div>
     </section>
+    <!--タイムテーブル-->
+    <section class="section time-table-section" id="time-table">
+      <div class="inner">
+        <h2 class="heading-content">
+          <span class="heading-text">Time Table</span>
+          <span class="heading-text-jp">タイムテーブル</span>
+        </h2>
+        <div class="body-content">
+          <img class="time-table-image" draggable="false"
+               [src]="timeTable$ | async" alt="タイムテーブル"
+               (click)="onOpenTimeTable()">
+        </div>
+      </div>
+    </section>
     <!--ライブ-->
     <section class="section live-section" id="live">
       <div class="inner">
