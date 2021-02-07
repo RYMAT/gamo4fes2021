@@ -17,9 +17,12 @@
     <div class="logo-content bg-image">がもよんフェス2020 - 2021</div>
   </div>
   <div class="main-content container">
-
     <!--アーティスト-->
-    <section class="section" id="artist">
+    <section class="section parallax-el" id="artist"
+             data-speed-y="-10" data-offset="50">
+      <div class="circle-content c1 parallax-el" data-speed-y="-35" data-offset="400"></div>
+      <div class="circle-content c4 parallax-el" data-speed-y="-30" data-offset="250"></div>
+      <div class="circle-content c2 parallax-el" data-speed-y="-15" data-offset="-300"></div>
       <h2 class="heading-content">
         <span class="heading-text">Artist</span>
         <span class="heading-text-jp">出演者</span>
@@ -29,7 +32,10 @@
       </div>
     </section>
     <!--タイムテーブル-->
-    <section class="section time-table-section" id="time-table">
+    <section class="section time-table-section parallax-el" id="time-table"
+             data-speed-y="-10" data-offset="60">
+      <div class="circle-content c4 parallax-el" data-speed-y="-35" data-offset="400"></div>
+      <div class="circle-content c5 parallax-el" data-speed-y="-25" data-offset="-300"></div>
       <div class="inner">
         <h2 class="heading-content">
           <span class="heading-text">Time Table</span>
@@ -43,7 +49,11 @@
       </div>
     </section>
     <!--ライブ-->
-    <section class="section live-section" id="live">
+    <section class="section live-section parallax-el" id="live"
+             data-speed-y="-8" data-offset="-130">
+      <div class="circle-content c3 parallax-el" data-speed-y="-25" data-offset="-300"></div>
+      <div class="circle-content c1 parallax-el" data-speed-y="-35" data-offset="400"></div>
+      <div class="circle-content c2 parallax-el" data-speed-y="-30" data-offset="250"></div>
       <div class="inner">
         <h2 class="heading-content">
           <span class="heading-text">Live</span>
@@ -55,7 +65,8 @@
       </div>
     </section>
     <!--アーカイブ-->
-    <section *ngIf="archives?.length" class="section archive-section" id="archive">
+    <section *ngIf="archives?.length" class="section archive-section parallax-el" id="archive"
+             data-speed-y="-5" data-offset="-100">
       <h2 class="heading-content">
         <span class="heading-text">Archive</span>
         <span class="heading-text-jp">アーカイブ</span>
@@ -65,7 +76,8 @@
       </div>
     </section>
     <!--協賛-->
-    <section class="section supporter-section">
+    <section class="section supporter-section parallax-el"
+             data-speed-y="-5" data-offset="0">
       <app-supporter-info></app-supporter-info>
     </section>
 
