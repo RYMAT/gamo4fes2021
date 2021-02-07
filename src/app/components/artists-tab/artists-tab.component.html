@@ -1,0 +1,32 @@
+<ng-container *ngIf="{ value :stageArtists$ | async} as snapShot">
+  <tabset #artistTabs>
+    <tab *ngFor="let tab of tabItems; index as i"
+         [id]="tab"
+         (selectTab)="onSelectedTab($event)">
+      <ng-template tabHeading>
+        <div class="tab-heading">
+          <span class="day-label">
+            {{tab | date:'MM/dd'}}
+          </span>
+          <span class="week-day">({{tab | date:'E'}})</span>
+        </div>
+      </ng-template>
+    </tab>
+  </tabset>
+  <div class="tab-content">
+    <ng-container *ngFor="let stageArtist of snapShot.value">
+      <h3 class="channel-heading">Channel{{stageArtist.channel}}
+        <small class="stage-label">（{{stageArtist.locationName}})</small>
+      </h3>
+      <ul class="artist-list">
+        <li *ngFor="let artist of stageArtist.artists" class="list-items">
+          <figure class="artist-thumb-content">
+            <img [src]="getThumbUrl(artist.id)" alt="{{artist.name}}のサムネイル">
+          </figure>
+          <a class="artist-label" [href]="artist.snsLink" target="_blank">{{artist.name}}</a>
+        </li>
+        <li></li>
+      </ul>
+    </ng-container>
+  </div>
+</ng-container>

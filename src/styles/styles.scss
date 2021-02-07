@@ -1,0 +1,23 @@
+@import "./fonts/index";
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  font-family: Helvetica, "Yu Gothic", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  height: 100%;
+}

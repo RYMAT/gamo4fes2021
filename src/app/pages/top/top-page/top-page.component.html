@@ -1,0 +1,78 @@
+<div class="top-page-content" id="parallax" [class.is-loaded]="isLoaded">
+  <div class="main-image">
+    <div class="bg-content town bg-image parallax-el"
+         data-speed-y="-15" data-offset="0"
+    ></div>
+    <div class="bg-content gyammossy bg-image"></div>
+    <div class="cloud cloud-1 bg-image"></div>
+    <div class="cloud cloud-2 bg-image"></div>
+    <div class="kira"></div>
+    <div class="balloon parallax-el" [class.is-loaded]="isLoaded"
+         data-speed-y="25" data-offset="-10">
+      <div class="balloon-inner">
+        <div class="balloon-content"></div>
+      </div>
+    </div>
+    <div class="logo-content bg-image">がもよんフェス2020 - 2021</div>
+  </div>
+  <div class="main-content container">
+
+    <!--アーティスト-->
+    <section class="section" id="artist">
+      <h2 class="heading-content">
+        <span class="heading-text">Artist</span>
+        <span class="heading-text-jp">出演者</span>
+      </h2>
+      <div class="body-content">
+        <app-artists-tab></app-artists-tab>
+      </div>
+    </section>
+    <!--ライブ-->
+    <section class="section live-section" id="live">
+      <div class="inner">
+        <h2 class="heading-content">
+          <span class="heading-text">Live</span>
+          <span class="heading-text-jp">ライブ配信</span>
+        </h2>
+        <div class="body-content">
+          <app-youtube-player></app-youtube-player>
+        </div>
+      </div>
+    </section>
+    <!--アーカイブ-->
+    <section *ngIf="archives?.length" class="section archive-section" id="archive">
+      <h2 class="heading-content">
+        <span class="heading-text">Archive</span>
+        <span class="heading-text-jp">アーカイブ</span>
+      </h2>
+      <div class="body-content">
+        <app-archive-carousel></app-archive-carousel>
+      </div>
+    </section>
+    <!--協賛-->
+    <section class="section supporter-section">
+      <app-supporter-info></app-supporter-info>
+    </section>
+
+    <!--Time Table -->
+    <!--    <div class="time-table">-->
+    <!--      <div class="circle-content c1 parallax-el" data-speed-y="-5" data-offset="400"></div>-->
+    <!--      <div class="circle-content c4 parallax-el" data-speed-y="-5" data-offset="400"></div>-->
+    <!--      <section class="section panel-content js-opacity js-translate-y" scrollStyle-->
+    <!--               [offsetHeight]="windowHeight/3">-->
+    <!--        <h2 class="heading-content">-->
+    <!--          <span class="heading-text">Time Table</span>-->
+    <!--          <span class="heading-text-jp">タイムテーブル</span>-->
+    <!--        </h2>-->
+    <!--        <div class="body-content">-->
+    <!--          <img class="time-table-image" draggable="false"-->
+    <!--               src="assets/images/time-table.jpg" alt="タイムテーブル"-->
+    <!--               (click)="onOpenTimeTable('assets/images/time-table.pdf')">-->
+    <!--        </div>-->
+    <!--      </section>-->
+    <!--    </div>-->
+
+  </div>
+  <app-footer class="app-footer"></app-footer>
+</div>
+<app-scroll-top-button></app-scroll-top-button>

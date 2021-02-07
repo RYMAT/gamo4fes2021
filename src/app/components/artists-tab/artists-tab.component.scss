@@ -1,0 +1,82 @@
+@import "variables";
+@import "~node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+.tab-heading {
+  text-align: center;
+  font-size: 26px;
+  color: $primary-color;
+  font-family: 'Lilita One', $font-family-base;
+  .day-label {
+    display: block;
+  }
+  .week-day {
+    display: block;
+    font-size: 16px;
+  }
+}
+
+.tab-content {
+  padding: 16px;
+}
+
+.channel-heading {
+  font-size: 32px;
+  color: $primary-color;
+  font-family: 'Lilita One', sans-serif;
+  .stage-label {
+    display: inline-block;
+    margin-left: 8px;
+    font-family: 'mamelon', $font-family-base;
+    color: inherit;
+  }
+}
+
+.artist-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-items {
+  margin: 32px;
+}
+
+.artist-label {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.artist-thumb-content {
+  border-radius: 16px;
+  width: 210px;
+  height: 210px;
+  overflow: hidden;
+  > img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
+    font-size: 11px;
+    color: #ccc;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+:host ::ng-deep {
+  .nav-tabs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
