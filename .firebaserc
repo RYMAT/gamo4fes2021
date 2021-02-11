@@ -1,14 +1,14 @@
 {
   "targets": {
-    "test-gamo": {
+    "gamo4fes": {
       "hosting": {
         "gamoyon": [
-          "test-gamo"
+          "gamo4fes"
         ]
       }
     }
   },
   "projects": {
-    "default": "test-gamo"
+    "default": "gamo4fes"
   }
 }

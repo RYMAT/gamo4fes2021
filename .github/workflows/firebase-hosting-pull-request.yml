@@ -19,7 +19,7 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TEST_GAMO }}'
-          projectId: test-gamo
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GAMO4FES }}'
+          projectId: gamo4fes
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
