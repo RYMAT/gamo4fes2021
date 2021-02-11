@@ -62,7 +62,7 @@
             (clicked)="onOpenTimeTable()"
           ></app-button>
           <button type="button" class="btn btn-arrow"
-                  [disabled]="tabItems.length < (activeTabIndex + 1)"
+                  [disabled]="tabItems.length <= (activeTabIndex + 1)"
                   (click)="onChangeTab(activeTabIndex + 1)"
           ><i class="icomoon-angle-right-solid"></i>
           </button>
