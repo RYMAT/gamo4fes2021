@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { LIVE_ARCHIVES } from '../../../core/constants/live-archives.constant';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { from } from 'rxjs';
+import { combineLatest, from } from 'rxjs';
 import * as imageLoaded from 'imagesloaded';
 import { LoadingService } from '../../../core/services/loading.service';
-import { STORAGE_BASE_PATH } from '../../../core/constants/firebase-storage.constant';
+import { filter, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-top-page',
@@ -16,7 +16,10 @@ export class TopPageComponent implements OnInit {
   windowHeight!: number;
   archives = LIVE_ARCHIVES;
   // TOP Image
-  townImage$ = from(this.storage.storage.ref().child('images/top/town.png').getDownloadURL());
+  townImage$ = from(this.storage.storage.ref().child('images/top/town.png').getDownloadURL()).pipe(filter((v) => !!v));
+  gyammosyImage$ = from(this.storage.storage.ref().child('images/top/gyammossy.png').getDownloadURL()).pipe(
+    filter((v) => !!v)
+  );
   // Time-Table
   timeTable$ = from(this.storage.storage.ref().child('images/time-table.jpg').getDownloadURL());
 
@@ -29,7 +32,12 @@ export class TopPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowHeight = window.innerHeight;
+    combineLatest([this.townImage$.pipe(first()), this.gyammosyImage$.pipe(first())])
+      .pipe(first())
+      .subscribe(() => this.checkImageLoaded());
+  }
 
+  checkImageLoaded(): void {
     const els = this.el.nativeElement.querySelectorAll('.bg-image');
     if (!els) {
       this.loadingService.isLoaded.next(true);
@@ -45,14 +53,5 @@ export class TopPageComponent implements OnInit {
         this.renderer.addClass(topPageEl, 'moving');
       }, 3000);
     });
-  }
-
-  onOpenTimeTable(): void {
-    const timeTablePath = this.getDownloadUrl('images/time-table.pdf');
-    window.open(timeTablePath);
-  }
-
-  private getDownloadUrl(path: string): string {
-    return `${STORAGE_BASE_PATH}/${encodeURIComponent(path)}?alt=media`;
   }
 }
