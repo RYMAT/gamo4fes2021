@@ -166,9 +166,12 @@
       background-color: #fafafa;
       box-shadow: none;
     }
+    &:disabled {
+      opacity: .6;
+    }
     > i {
       display: inline-block;
-      color: #aaa;
+      color: #999;
     }
   }
 }
@@ -198,7 +201,6 @@
       font-size: 45%;
     }
   }
-
 }
 
 @media screen and (max-width: $screen-xs) {
@@ -244,7 +246,7 @@
   .time-table-wrapper {
     padding-top: 80px;
     .time-table-content {
-      padding: 24px 0;
+      padding: 24px 8px;
     }
     .time-table-image {
       width: auto;
