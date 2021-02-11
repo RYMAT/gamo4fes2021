@@ -1,8 +1,10 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { LoadingService } from './core/services/loading.service';
 import { queueScheduler, Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+
+declare var luxy: any;
 
 @Component({
   selector: 'app-root',
@@ -34,7 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
     return window.ontouchstart === null;
   }
 
-  constructor(private loadingService: LoadingService, @Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    private loadingService: LoadingService,
+    @Inject(DOCUMENT) private document: Document,
+    private zone: NgZone
+  ) {}
 
   ngOnInit(): void {
     this.subscription.add(this.loadingService.isLoaded.subscribe((v) => this.onLoad(v)));
@@ -68,17 +74,17 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
     this.setState('show');
-    // if (!this.isTouchDevice) {
-    //   this.zone.runOutsideAngular(() => {
-    //     setTimeout(() => {
-    //       luxy.init({
-    //         wrapper: '#parallax',
-    //         targets: '.parallax-el',
-    //         wrapperSpeed: 0.09
-    //       });
-    //     });
-    //   });
-    // }
+    if (!this.isTouchDevice) {
+      this.zone.runOutsideAngular(() => {
+        setTimeout(() => {
+          luxy.init({
+            wrapper: '#parallax',
+            targets: '.parallax-el',
+            wrapperSpeed: 0.09,
+          });
+        });
+      });
+    }
   }
 
   private setState(state: string): void {

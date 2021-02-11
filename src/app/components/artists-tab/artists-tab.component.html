@@ -38,5 +38,36 @@
       </li>
     </ul>
 
+    <!--タイムテーブル-->
+    <div *ngIf="timeTableSrc$.value" class="time-table-wrapper" id="time-table">
+      <h4 class="heading-content">
+        <span class="heading-text">Time Table</span>
+        <span class="heading-text-jp">タイムテーブル</span>
+      </h4>
+      <div class="time-table-content">
+        <img [src]="timeTableSrc$.value"
+             [class.is-wide]="(snapShot.value?.length || 0) > 1"
+             class="time-table-image"
+             draggable="false"
+             alt="タイムテーブル"
+        >
+        <div class="button-wrapper">
+          <button type="button" class="btn btn-arrow"
+                  [disabled]="0 > (activeTabIndex - 1)"
+                  (click)="onChangeTab(activeTabIndex - 1)">
+            <i class="icomoon-angle-left-solid"></i>
+          </button>
+          <app-button
+            labelText="Weekly TimeTable"
+            (clicked)="onOpenTimeTable()"
+          ></app-button>
+          <button type="button" class="btn btn-arrow"
+                  [disabled]="tabItems.length <= (activeTabIndex + 1)"
+                  (click)="onChangeTab(activeTabIndex + 1)"
+          ><i class="icomoon-angle-right-solid"></i>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </ng-container>

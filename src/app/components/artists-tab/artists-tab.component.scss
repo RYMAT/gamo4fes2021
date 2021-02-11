@@ -91,12 +91,114 @@
   }
 }
 
+.heading-content {
+  display: inline-block;
+  margin: 0;
+  padding: 0 0 16px 0;
+  color: $primary-color;
+  letter-spacing: .05em;
+  text-align: center;
+  font-size: 30px;
+  .heading-text {
+    position: relative;
+    display: block;
+    font-size: 55px;
+    font-family: 'Lilita One', sans-serif;
+    &:before, &:after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 48px;
+      height: 2px;
+      margin: auto 0 auto -80px;
+      background: linear-gradient(to right, #00A09B, #00B383);
+    }
+    &:before {
+      left: 0;
+      margin: auto 0 auto -80px;
+    }
+    &:after {
+      right: 0;
+      margin: auto -80px auto 0;
+    }
+  }
+  .heading-text-jp {
+    display: block;
+    font-size: 60%;
+    font-family: 'mamelon', sans-serif;
+  }
+}
+
+.time-table-wrapper {
+  padding-top: 80px;
+  text-align: center;
+  .time-table-content {
+    padding: 24px 48px;
+  }
+  .time-table-image {
+    width: 400px;
+    max-width: 100%;
+    display: inline-block;
+    object-fit: contain;
+    &.is-wide {
+      width: 640px;
+    }
+  }
+}
+
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 48px 0;
+  .btn-arrow {
+    min-width: 50px;
+    font-size: 30px;
+    line-height: 1.1;
+    border-radius: 10px;
+    background-color: #fff;
+    outline: none;
+    box-shadow: none;
+    &:focus, &:active {
+      background-color: #fafafa;
+      box-shadow: none;
+    }
+    > i {
+      display: inline-block;
+      color: #aaa;
+    }
+  }
+}
+
 :host ::ng-deep {
   .nav-tabs {
     width: 100%;
     display: flex;
     justify-content: center;
   }
+}
+
+@media screen and (max-width: $screen-md) {
+  .heading-content {
+    font-size: 30px;
+    padding: 0 0 16px 0;
+    &:before {
+      width: 60px;
+      height: 2px;
+      margin: 0 auto;
+    }
+    .heading-text {
+      font-size: 40px;
+    }
+    .heading-text-jp {
+      margin-top: 8px;
+      font-size: 45%;
+    }
+  }
+
 }
 
 @media screen and (max-width: $screen-xs) {
@@ -138,6 +240,21 @@
       }
     }
   }
+
+  .time-table-wrapper {
+    padding-top: 80px;
+    .time-table-content {
+      padding: 24px 0;
+    }
+    .time-table-image {
+      width: auto;
+      max-width: 100%;
+      &.is-wide {
+        width: 100%;
+      }
+    }
+  }
+
 
   :host ::ng-deep {
     .tabset {
