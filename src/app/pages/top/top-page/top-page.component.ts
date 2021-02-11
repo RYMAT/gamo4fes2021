@@ -20,8 +20,6 @@ export class TopPageComponent implements OnInit {
   gyammosyImage$ = from(this.storage.storage.ref().child('images/top/gyammossy.png').getDownloadURL()).pipe(
     filter((v) => !!v)
   );
-  // Time-Table
-  timeTable$ = from(this.storage.storage.ref().child('images/time-table.jpg').getDownloadURL());
 
   constructor(
     private storage: AngularFireStorage,
