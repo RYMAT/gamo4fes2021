@@ -51,21 +51,21 @@
              draggable="false"
              alt="タイムテーブル"
         >
+        <button type="button" class="btn btn-arrow arrow-left"
+                [disabled]="0 > (activeTabIndex - 1)"
+                (click)="onChangeTab(activeTabIndex - 1)">
+          <i class="icomoon-angle-left-solid"></i>
+        </button>
+        <button type="button" class="btn btn-arrow arrow-right"
+                [disabled]="tabItems.length <= (activeTabIndex + 1)"
+                (click)="onChangeTab(activeTabIndex + 1)"
+        ><i class="icomoon-angle-right-solid"></i>
+        </button>
         <div class="button-wrapper">
-          <button type="button" class="btn btn-arrow"
-                  [disabled]="0 > (activeTabIndex - 1)"
-                  (click)="onChangeTab(activeTabIndex - 1)">
-            <i class="icomoon-angle-left-solid"></i>
-          </button>
           <app-button
             labelText="Weekly TimeTable"
             (clicked)="onOpenTimeTable()"
           ></app-button>
-          <button type="button" class="btn btn-arrow"
-                  [disabled]="tabItems.length <= (activeTabIndex + 1)"
-                  (click)="onChangeTab(activeTabIndex + 1)"
-          ><i class="icomoon-angle-right-solid"></i>
-          </button>
         </div>
       </div>
     </div>
