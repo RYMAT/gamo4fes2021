@@ -131,9 +131,9 @@ const FRI_STAGE_ARTISTS: StageArtist = {
   ],
 };
 // 2/27(土) - 1
-const SAT_STAGE_ARTISTS_1: StageArtist = {
+const SAT_STAGE_ARTISTS_2: StageArtist = {
   date: '2021/02/27',
-  channel: 1,
+  channel: 2,
   locationName: 'cafe bar 鐘の音',
   artists: [
     { id: 31, name: '正岡莉奈', snsLink: 'http://www.deflectial.com/masaoka_rina/' },
@@ -174,9 +174,9 @@ const SAT_STAGE_ARTISTS_1: StageArtist = {
   ],
 };
 // 2/27(土) - 2
-const SAT_STAGE_ARTISTS_2: StageArtist = {
+const SAT_STAGE_ARTISTS_1: StageArtist = {
   date: '2021/02/27',
-  channel: 2,
+  channel: 1,
   locationName: 'イタリアンバールISOLA',
   artists: [
     { id: 41, name: '加納兄弟', snsLink: 'https://twitter.com/tomi2ban' },
@@ -212,9 +212,9 @@ const SAT_STAGE_ARTISTS_2: StageArtist = {
   ],
 };
 // 2/28(日) - 1
-const SUN_STAGE_ARTISTS_1: StageArtist = {
+const SUN_STAGE_ARTISTS_2: StageArtist = {
   date: '2021/02/28',
-  channel: 1,
+  channel: 2,
   locationName: 'cafe bar 鐘の音',
   artists: [
     { id: 51, name: '犬丸翔太郎', snsLink: 'https://inumarushotaro.localinfo.jp' },
@@ -246,9 +246,9 @@ const SUN_STAGE_ARTISTS_1: StageArtist = {
   ],
 };
 // 2/28(日) - 2
-const SUN_STAGE_ARTISTS_2: StageArtist = {
+const SUN_STAGE_ARTISTS_1: StageArtist = {
   date: '2021/02/28',
-  channel: 2,
+  channel: 1,
   locationName: 'STODIO GEAR',
   artists: [
     { id: 60, name: 'funnySkash', snsLink: 'http://funnyskash.com/' },
