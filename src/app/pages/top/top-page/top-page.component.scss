@@ -100,6 +100,7 @@
   }
 }
 
+
 .main-image {
   position: relative;
   width: 100%;
@@ -179,6 +180,38 @@
     background-image: url($image-path + "/top/kira.png");
     z-index: 2;
   }
+  .top-message {
+    margin: auto 0;
+    width: 100%;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 60px;
+    text-align: center;
+    font-size: 60px;
+    font-family: "Lilita One", sans-serif;
+    letter-spacing: .05em;
+    opacity: 0;
+    transition: opacity 400ms 2s ease-out;
+    color: #EB6EA5;
+    text-shadow: 2px 2px 1px #ffffff,
+    -2px 2px 1px #ffffff,
+    2px -2px 1px #ffffff,
+    -2px -2px 1px #ffffff,
+    2px 0px 1px #ffffff,
+    0px 2px 1px #ffffff,
+    -2px 0px 1px #ffffff,
+    0px -2px 1px #ffffff;
+    > p {
+      font-size: 16px;
+      letter-spacing: .02em;
+    }
+    &.is-loaded {
+      opacity: 1;
+      transition: opacity 400ms 2s ease-out;
+    }
+  }
 }
 
 @keyframes cloud {
@@ -254,6 +287,17 @@
   padding: 64px 24px;
   position: relative;
   text-align: center;
+  &.organizer-message-content {
+    padding: 24px 0;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(60px);
+    &.is-loaded {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease-out 1.7s, transform 0.3s ease-out 1.7s;
+    }
+  }
   .heading-content {
     display: inline-block;
     margin: 0;
@@ -649,6 +693,9 @@
       bottom: 0;
       margin: 0 auto;
       margin-bottom: -30px;
+    }
+    .top-message {
+      height: 300px;
     }
   }
 
