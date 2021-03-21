@@ -11,6 +11,8 @@ import { ArtistsTabModule } from '../../components/artists-tab/artists-tab.modul
 import { YoutubePlayerModule } from '../../components/youtube-player/youtube-player.module';
 import { ArchiveCarouselModule } from '../../components/archive-carousel/archive-carousel.module';
 import { SupporterInfoModule } from '../../components/supporter-info/supporter-info.module';
+import { ArchiveListModule } from '../../components/archive-list/archive-list.module';
+import { OrganizerMessageModule } from '../../components/organizer-message/organizer-message.module';
 
 @NgModule({
   imports: [
@@ -25,6 +27,8 @@ import { SupporterInfoModule } from '../../components/supporter-info/supporter-i
     YoutubePlayerModule,
     ArchiveCarouselModule,
     SupporterInfoModule,
+    ArchiveListModule,
+    OrganizerMessageModule,
   ],
   declarations: [TopPageComponent],
 })

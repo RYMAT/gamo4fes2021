@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HeaderModule } from './shared/header/header.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { HeaderModule } from './shared/header/header.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     CarouselModule.forRoot(),
+    ModalModule.forRoot(),
     HeaderModule,
   ],
   providers: [],
