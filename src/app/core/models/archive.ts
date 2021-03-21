@@ -4,6 +4,6 @@ export interface Archive {
   srcUrl: string;
   // 画面遷移用src
   linkUrl: string;
-  // キャプション
-  captionLabel: string | null;
+  archiveDate: string | null;
+  caption?: string | null;
 }
